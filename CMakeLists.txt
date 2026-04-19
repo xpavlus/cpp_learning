@@ -32,3 +32,6 @@ add_executable(lesson_04_task01_functions lessons/04_functions/src/task01_functi
 
 # lesson 05 — task01_oop
 add_executable(lesson_05_task01_oop lessons/05_oop/src/task01_oop.cpp)
+
+# lesson 06 — task01_templates
+add_executable(lesson_06_task01_templates lessons/06_templates/src/task01_templates.cpp)

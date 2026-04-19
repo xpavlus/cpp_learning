@@ -35,9 +35,86 @@
 #include <iostream>
 #include <string>
 
-// TODO: объяви класс BankAccount здесь
+class Person {
+    private:
+        std::string name;
+        int age;
+        std::string address;
+    public:
+        Person(std::string name, int age = 0, std::string address = "Unknown")
+            : name(name), age(age), address(address) {
+                if (age < 0) {
+                    std::cout << "Возраст не может быть отрицательным. Устанавливаем возраст в 0." << std::endl;
+                    this->age = 0;
+                }
+            }
+        std::string toString() const {
+            return "Name: " + name + ", Age: " + std::to_string(age) + ", Address: " + address;
+        }
+        void printInfo() const {
+            std::cout << "Person[" << std::endl;
+            std::cout << toString() << std::endl;
+            std::cout << "]" << std::endl;
+        }
+};
+
+class BankAccount {
+    private:
+        Person owner;
+        double balance;
+    public:
+        BankAccount(std::string name, int age = 0, double initialBalance = 0.0) 
+            : owner(name, age), balance(initialBalance) {
+                if (initialBalance < 0) {
+                    std::cout << "Начальный баланс не может быть отрицательным. Устанавливаем баланс в 0." << std::endl;
+                    balance = 0;
+                }
+            }
+        bool deposit(double amount) {
+            if (amount <= 0) {
+                return false;
+            }
+            if (amount > std::numeric_limits<double>::max() - balance) {
+                return false;
+            }
+            balance += amount;
+            return true;
+        }
+        bool withdraw(double amount) {
+            if (amount <= 0 || amount > balance) {
+                return false;
+            }
+            balance -= amount;
+            return true;
+        }
+        double getBalance() const {
+            return balance;
+        }
+        void printInfo() const {
+            std::cout << "Account[" << owner.toString() << "]:" << std::endl;
+            std::cout << "Balance: " << getBalance() << std::endl;
+        }
+};
+
+    
 
 int main() {
-    // ваш код здесь
-    return 0;
+    BankAccount aliceAccount("Alice", 30, 1000.0);
+    if (aliceAccount.deposit(500.5)) {
+        std::cout << "Депозит 500.5 успешен" << std::endl;
+    } else {
+        std::cout << "Депозит 500.5 не удался" << std::endl;
+    }
+    if (aliceAccount.withdraw(200.0)) {
+        std::cout << "Снятие 200.0 успешно" << std::endl;
+    } else {
+        std::cout << "Снятие 200.0 не удалось" << std::endl;
+    }
+    if (aliceAccount.withdraw(2000.0)) {
+        std::cout << "Снятие 2000.0 успешно" << std::endl;
+    } else {
+        std::cout << "Снятие 2000.0 не удалось" << std::endl;
+    }
+    aliceAccount.printInfo();
+
 }
