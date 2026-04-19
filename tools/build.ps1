@@ -33,7 +33,7 @@ Write-Host ""
 
 # Шаг 1: Configure
 Write-Host "--- CMake configure ---"
-cmake -S $RepoRoot -B $BuildDir -G "Visual Studio 17 2022" -A x64
+cmake -S $RepoRoot -B $BuildDir -G "Visual Studio 18 2026" -A x64
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 # Шаг 2: Build

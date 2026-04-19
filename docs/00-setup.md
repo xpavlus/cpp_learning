@@ -46,7 +46,7 @@ cmake --version
 ### Visual Studio generator (рекомендуется для начала)
 
 ```powershell
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake -S . -B build -G "Visual Studio 18 2026" -A x64
 cmake --build build --config Debug
 ```
 
@@ -85,7 +85,7 @@ winget install Ninja-build.Ninja
 .\tools\build.ps1        # → собирает Debug в папку build/
 
 # или вручную:
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake -S . -B build -G "Visual Studio 18 2026" -A x64
 cmake --build build --config Debug
 
 # запуск:
