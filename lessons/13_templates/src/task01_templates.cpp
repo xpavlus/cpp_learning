@@ -33,8 +33,6 @@
 #include <string>
 #include <type_traits>
 
-// ... твой код здесь
-
 int main() {
-    // ... твой код здесь
+    
 }
